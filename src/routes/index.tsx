@@ -66,7 +66,7 @@ function Index() {
         <div className="container-x flex items-center justify-between h-20">
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 -ml-2"><Menu className="h-5 w-5" /></button>
           <nav className="hidden md:flex items-center gap-9 text-[12px] tracking-[0.2em] uppercase">
-            <a href="#" className="hover:text-[color:var(--color-gold)] transition">Boutique</a>
+            <Link to="/boutique" className="hover:text-[color:var(--color-gold)] transition">Boutique</Link>
             <a href="#categories" className="hover:text-[color:var(--color-gold)] transition">Catégories</a>
             <a href="#produits" className="hover:text-[color:var(--color-gold)] transition">Nouveautés</a>
             <a href="#about" className="hover:text-[color:var(--color-gold)] transition">À propos</a>
