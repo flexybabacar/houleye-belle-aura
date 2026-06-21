@@ -150,9 +150,9 @@ function Index() {
               <p className="eyebrow mb-4">Catégories</p>
               <h2 className="text-4xl md:text-5xl max-w-xl">Tout l'univers Houleye</h2>
             </div>
-            <a href="#" className="text-xs tracking-[0.2em] uppercase inline-flex items-center gap-2 hover:text-[color:var(--color-gold)] transition">
+            <Link to="/boutique" className="text-xs tracking-[0.2em] uppercase inline-flex items-center gap-2 hover:text-[color:var(--color-gold)] transition">
               Voir la boutique <ArrowRight className="h-3 w-3" />
-            </a>
+            </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {categories.map((c) => (
