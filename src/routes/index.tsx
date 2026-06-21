@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { Search, ShoppingBag, Heart, User, Menu, Star, Truck, ShieldCheck, Sparkles, Headphones, ArrowRight, Instagram, Facebook } from "lucide-react";
 import hero from "@/assets/hero.jpg";
@@ -66,7 +66,7 @@ function Index() {
         <div className="container-x flex items-center justify-between h-20">
           <button onClick={() => setOpen(!open)} className="md:hidden p-2 -ml-2"><Menu className="h-5 w-5" /></button>
           <nav className="hidden md:flex items-center gap-9 text-[12px] tracking-[0.2em] uppercase">
-            <a href="#" className="hover:text-[color:var(--color-gold)] transition">Boutique</a>
+            <Link to="/boutique" className="hover:text-[color:var(--color-gold)] transition">Boutique</Link>
             <a href="#categories" className="hover:text-[color:var(--color-gold)] transition">Catégories</a>
             <a href="#produits" className="hover:text-[color:var(--color-gold)] transition">Nouveautés</a>
             <a href="#about" className="hover:text-[color:var(--color-gold)] transition">À propos</a>
@@ -150,9 +150,9 @@ function Index() {
               <p className="eyebrow mb-4">Catégories</p>
               <h2 className="text-4xl md:text-5xl max-w-xl">Tout l'univers Houleye</h2>
             </div>
-            <a href="#" className="text-xs tracking-[0.2em] uppercase inline-flex items-center gap-2 hover:text-[color:var(--color-gold)] transition">
+            <Link to="/boutique" className="text-xs tracking-[0.2em] uppercase inline-flex items-center gap-2 hover:text-[color:var(--color-gold)] transition">
               Voir la boutique <ArrowRight className="h-3 w-3" />
-            </a>
+            </Link>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {categories.map((c) => (
