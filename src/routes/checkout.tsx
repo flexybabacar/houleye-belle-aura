@@ -46,7 +46,7 @@ function CheckoutPage() {
     setTimeout(() => {
       try { localStorage.setItem("houleye-last-order", JSON.stringify({ id: orderId, total, items: detailed.length, method: pay, email: contact.email })); } catch { /* ignore */ }
       clear();
-      navigate({ to: "/checkout/succes", search: { id: orderId } });
+      navigate({ to: "/checkout-success", search: { id: orderId } });
     }, 1600);
   };
 

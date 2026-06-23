@@ -3,7 +3,7 @@ import { CheckCircle2, Package, Mail } from "lucide-react";
 import { z } from "zod";
 import { SiteHeader, SiteFooter } from "@/components/site-chrome";
 
-export const Route = createFileRoute("/checkout/succes")({
+export const Route = createFileRoute("/checkout-success")({
   validateSearch: z.object({ id: z.string().optional() }),
   head: () => ({
     meta: [
