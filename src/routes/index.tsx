@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { Search, ShoppingBag, Heart, User, Menu, Star, Truck, ShieldCheck, Sparkles, Headphones, ArrowRight, Instagram, Facebook } from "lucide-react";
+import { Search, ShoppingBag, Heart, User, Menu, Star, Truck, ShieldCheck, Sparkles, Headphones, ArrowRight, Instagram, Facebook, X } from "lucide-react";
 import hero from "@/assets/hero.jpg";
 import catVisage from "@/assets/cat-visage.jpg";
 import catMakeup from "@/assets/cat-makeup.jpg";
@@ -64,27 +64,37 @@ function Index() {
       {/* Header */}
       <header className="sticky top-0 z-40 bg-background/85 backdrop-blur border-b border-border">
         <div className="container-x flex items-center justify-between h-20">
-          <button onClick={() => setOpen(!open)} className="md:hidden p-2 -ml-2"><Menu className="h-5 w-5" /></button>
+          <button onClick={() => setOpen(!open)} className="md:hidden p-2 -ml-2" aria-label="Menu">{open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}</button>
           <nav className="hidden md:flex items-center gap-9 text-[12px] tracking-[0.2em] uppercase">
             <Link to="/boutique" className="hover:text-[color:var(--color-gold)] transition">Boutique</Link>
             <a href="#categories" className="hover:text-[color:var(--color-gold)] transition">Catégories</a>
             <a href="#produits" className="hover:text-[color:var(--color-gold)] transition">Nouveautés</a>
             <a href="#about" className="hover:text-[color:var(--color-gold)] transition">À propos</a>
           </nav>
-          <a href="/" className="font-serif text-2xl md:text-3xl tracking-wider">
+          <Link to="/" className="font-serif text-xl sm:text-2xl md:text-3xl tracking-wider text-center flex-1 md:flex-none">
             Houleye
-            <span className="block text-[9px] tracking-[0.4em] uppercase text-muted-foreground -mt-1 text-center font-sans">Beauty Maison</span>
-          </a>
-          <div className="flex items-center gap-4 md:gap-5">
-            <button aria-label="Recherche" className="hover:text-[color:var(--color-gold)] transition"><Search className="h-[18px] w-[18px]" /></button>
-            <button aria-label="Compte" className="hidden sm:block hover:text-[color:var(--color-gold)] transition"><User className="h-[18px] w-[18px]" /></button>
-            <button aria-label="Favoris" className="hidden sm:block hover:text-[color:var(--color-gold)] transition"><Heart className="h-[18px] w-[18px]" /></button>
-            <button aria-label="Panier" className="relative hover:text-[color:var(--color-gold)] transition">
-              <ShoppingBag className="h-[18px] w-[18px]" />
-              <span className="absolute -top-2 -right-2 bg-[color:var(--color-gold)] text-ink text-[10px] rounded-full h-4 w-4 grid place-items-center font-medium">2</span>
-            </button>
+            <span className="block text-[8px] sm:text-[9px] tracking-[0.4em] uppercase text-muted-foreground -mt-0.5 sm:-mt-1 font-sans">Beauty Maison</span>
+          </Link>
+          <div className="flex items-center gap-2 sm:gap-4 md:gap-5">
+            <button aria-label="Recherche" className="p-1 sm:p-2 hover:text-[color:var(--color-gold)] transition"><Search className="h-[16px] sm:h-[18px] w-[16px] sm:w-[18px]" /></button>
+            <Link to="/compte" aria-label="Compte" className="p-1 sm:p-2 hover:text-[color:var(--color-gold)] transition"><User className="h-[16px] sm:h-[18px] w-[16px] sm:w-[18px]" /></Link>
+            <button aria-label="Favoris" className="hidden sm:flex p-1 sm:p-2 hover:text-[color:var(--color-gold)] transition"><Heart className="h-[16px] sm:h-[18px] w-[16px] sm:w-[18px]" /></button>
+            <Link to="/panier" aria-label="Panier" className="relative p-1 sm:p-2 hover:text-[color:var(--color-gold)] transition">
+              <ShoppingBag className="h-[16px] sm:h-[18px] w-[16px] sm:w-[18px]" />
+              <span className="absolute -top-1 -right-1 bg-[color:var(--color-gold)] text-ink text-[9px] rounded-full h-3.5 w-3.5 sm:h-4 sm:w-4 flex items-center justify-center font-medium text-[8px] sm:text-[10px]">2</span>
+            </Link>
           </div>
         </div>
+        {open && (
+          <div className="md:hidden border-t border-border bg-background">
+            <nav className="container-x py-4 flex flex-col gap-3 text-sm">
+              <Link to="/boutique" onClick={() => setOpen(false)} className="py-2 hover:text-[color:var(--color-gold)] transition">Boutique</Link>
+              <a href="#categories" onClick={() => setOpen(false)} className="py-2 hover:text-[color:var(--color-gold)] transition">Catégories</a>
+              <a href="#produits" onClick={() => setOpen(false)} className="py-2 hover:text-[color:var(--color-gold)] transition">Nouveautés</a>
+              <a href="#about" onClick={() => setOpen(false)} className="py-2 hover:text-[color:var(--color-gold)] transition">À propos</a>
+            </nav>
+          </div>
+        )}
       </header>
 
       {/* Hero */}
