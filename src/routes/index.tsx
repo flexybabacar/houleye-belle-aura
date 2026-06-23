@@ -127,9 +127,9 @@ function Index() {
             <div className="absolute bottom-8 left-8 right-8 md:bottom-12 md:left-12 bg-background/90 backdrop-blur p-5 md:p-6 max-w-xs">
               <p className="eyebrow mb-2">Coup de cœur</p>
               <p className="font-serif text-xl mb-3">Rituel Éclat Or — édition limitée</p>
-              <a href="#" className="text-xs tracking-[0.2em] uppercase inline-flex items-center gap-2 hover:text-[color:var(--color-gold)] transition">
+              <Link to="/boutique" className="text-xs tracking-[0.2em] uppercase inline-flex items-center gap-2 hover:text-[color:var(--color-gold)] transition">
                 Explorer <ArrowRight className="h-3 w-3" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -156,7 +156,7 @@ function Index() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
             {categories.map((c) => (
-              <a key={c.name} href="#" className="group block">
+              <Link key={c.name} to="/boutique" className="group block">
                 <div className="aspect-[4/5] overflow-hidden bg-[color:var(--color-cream)] mb-4">
                   <img src={c.img} alt={c.name} loading="lazy" width={800} height={1000} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                 </div>
@@ -164,7 +164,7 @@ function Index() {
                   <h3 className="font-serif text-lg">{c.name}</h3>
                   <ArrowRight className="h-4 w-4 -translate-x-2 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition" />
                 </div>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

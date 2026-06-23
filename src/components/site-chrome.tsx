@@ -76,7 +76,7 @@ export function SiteFooter() {
             <li><Link to="/a-propos">Notre histoire</Link></li>
             <li><Link to="/contact">Contact</Link></li>
             <li><Link to="/compte">Mon compte</Link></li>
-            <li><a href="#">Programme fidélité</a></li>
+            <li><Link to="/compte">Programme fidélité</Link></li>
           </ul>
         </div>
         <div>
