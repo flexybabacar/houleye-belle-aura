@@ -9,12 +9,44 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PanierRouteImport } from './routes/panier'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CompteRouteImport } from './routes/compte'
+import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as BoutiqueRouteImport } from './routes/boutique'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ProduitIdRouteImport } from './routes/produit.$id'
+import { Route as CheckoutSuccesRouteImport } from './routes/checkout.succes'
 
+const PanierRoute = PanierRouteImport.update({
+  id: '/panier',
+  path: '/panier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompteRoute = CompteRouteImport.update({
+  id: '/compte',
+  path: '/compte',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutRoute = CheckoutRouteImport.update({
+  id: '/checkout',
+  path: '/checkout',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BoutiqueRoute = BoutiqueRouteImport.update({
   id: '/boutique',
   path: '/boutique',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -22,40 +54,140 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProduitIdRoute = ProduitIdRouteImport.update({
+  id: '/produit/$id',
+  path: '/produit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CheckoutSuccesRoute = CheckoutSuccesRouteImport.update({
+  id: '/succes',
+  path: '/succes',
+  getParentRoute: () => CheckoutRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/boutique': typeof BoutiqueRoute
+  '/checkout': typeof CheckoutRouteWithChildren
+  '/compte': typeof CompteRoute
+  '/contact': typeof ContactRoute
+  '/panier': typeof PanierRoute
+  '/checkout/succes': typeof CheckoutSuccesRoute
+  '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/boutique': typeof BoutiqueRoute
+  '/checkout': typeof CheckoutRouteWithChildren
+  '/compte': typeof CompteRoute
+  '/contact': typeof ContactRoute
+  '/panier': typeof PanierRoute
+  '/checkout/succes': typeof CheckoutSuccesRoute
+  '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
   '/boutique': typeof BoutiqueRoute
+  '/checkout': typeof CheckoutRouteWithChildren
+  '/compte': typeof CompteRoute
+  '/contact': typeof ContactRoute
+  '/panier': typeof PanierRoute
+  '/checkout/succes': typeof CheckoutSuccesRoute
+  '/produit/$id': typeof ProduitIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/boutique'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/boutique'
+    | '/checkout'
+    | '/compte'
+    | '/contact'
+    | '/panier'
+    | '/checkout/succes'
+    | '/produit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/boutique'
-  id: '__root__' | '/' | '/boutique'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/boutique'
+    | '/checkout'
+    | '/compte'
+    | '/contact'
+    | '/panier'
+    | '/checkout/succes'
+    | '/produit/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/boutique'
+    | '/checkout'
+    | '/compte'
+    | '/contact'
+    | '/panier'
+    | '/checkout/succes'
+    | '/produit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
   BoutiqueRoute: typeof BoutiqueRoute
+  CheckoutRoute: typeof CheckoutRouteWithChildren
+  CompteRoute: typeof CompteRoute
+  ContactRoute: typeof ContactRoute
+  PanierRoute: typeof PanierRoute
+  ProduitIdRoute: typeof ProduitIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/panier': {
+      id: '/panier'
+      path: '/panier'
+      fullPath: '/panier'
+      preLoaderRoute: typeof PanierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compte': {
+      id: '/compte'
+      path: '/compte'
+      fullPath: '/compte'
+      preLoaderRoute: typeof CompteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout': {
+      id: '/checkout'
+      path: '/checkout'
+      fullPath: '/checkout'
+      preLoaderRoute: typeof CheckoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/boutique': {
       id: '/boutique'
       path: '/boutique'
       fullPath: '/boutique'
       preLoaderRoute: typeof BoutiqueRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -65,12 +197,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/produit/$id': {
+      id: '/produit/$id'
+      path: '/produit/$id'
+      fullPath: '/produit/$id'
+      preLoaderRoute: typeof ProduitIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/checkout/succes': {
+      id: '/checkout/succes'
+      path: '/succes'
+      fullPath: '/checkout/succes'
+      preLoaderRoute: typeof CheckoutSuccesRouteImport
+      parentRoute: typeof CheckoutRoute
+    }
   }
 }
 
+interface CheckoutRouteChildren {
+  CheckoutSuccesRoute: typeof CheckoutSuccesRoute
+}
+
+const CheckoutRouteChildren: CheckoutRouteChildren = {
+  CheckoutSuccesRoute: CheckoutSuccesRoute,
+}
+
+const CheckoutRouteWithChildren = CheckoutRoute._addFileChildren(
+  CheckoutRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
   BoutiqueRoute: BoutiqueRoute,
+  CheckoutRoute: CheckoutRouteWithChildren,
+  CompteRoute: CompteRoute,
+  ContactRoute: ContactRoute,
+  PanierRoute: PanierRoute,
+  ProduitIdRoute: ProduitIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
