@@ -321,3 +321,38 @@ function Boutique() {
     </div>
   );
 }
+
+function ProductCard({ p }: { p: Product }) {
+  const { add } = useCart();
+  return (
+    <article className="group">
+      <div className="relative aspect-square bg-[color:var(--color-cream)] overflow-hidden mb-5">
+        {p.tag && (
+          <span className="absolute top-4 left-4 z-10 bg-ink text-cream text-[10px] tracking-[0.2em] uppercase px-3 py-1.5">{p.tag}</span>
+        )}
+        <button aria-label="Ajouter aux favoris" className="absolute top-4 right-4 z-10 h-9 w-9 grid place-items-center bg-background/80 backdrop-blur rounded-full hover:bg-[color:var(--color-gold)] hover:text-ink transition">
+          <Heart className="h-4 w-4" />
+        </button>
+        <Link to="/produit/$id" params={{ id: p.id }} className="block h-full w-full">
+          <img src={p.img} alt={p.name} loading="lazy" width={800} height={800} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        </Link>
+        <div className="absolute inset-x-0 bottom-0 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+          <button onClick={() => add(p.id, 1)} className="w-full bg-ink text-cream py-3.5 text-[11px] tracking-[0.25em] uppercase hover:bg-[color:var(--color-gold)] hover:text-ink transition">
+            Ajouter au panier
+          </button>
+        </div>
+      </div>
+      <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-1.5">{p.category}</p>
+      <Link to="/produit/$id" params={{ id: p.id }}><h3 className="font-serif text-lg md:text-xl mb-2">{p.name}</h3></Link>
+      <div className="flex items-center justify-between">
+        <div className="flex items-baseline gap-2">
+          <span className="text-sm font-medium">{p.price.toLocaleString("fr-FR")} FCFA</span>
+          {p.oldPrice && (<span className="text-xs text-muted-foreground line-through">{p.oldPrice.toLocaleString("fr-FR")}</span>)}
+        </div>
+        <div className="flex gap-0.5 text-[color:var(--color-gold)]">
+          {Array.from({ length: p.rating }).map((_, i) => <Star key={i} className="h-3 w-3 fill-current" />)}
+        </div>
+      </div>
+    </article>
+  );
+}
